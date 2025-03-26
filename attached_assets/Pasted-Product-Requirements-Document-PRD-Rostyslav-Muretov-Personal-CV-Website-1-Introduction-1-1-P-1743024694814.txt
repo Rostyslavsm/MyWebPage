@@ -1,0 +1,265 @@
+Product Requirements Document (PRD): Rostyslav Muretov - Personal CV Website
+
+1. Introduction
+
+1.1 Purpose: This document outlines the requirements for a personal CV website for Rostyslav (Ross) Muretov. The primary goal of this website is to serve as a dynamic, professional online presence to support his job search efforts for Co-op opportunities and future roles within the tech industry.
+
+1.2 Scope: The website will showcase Rostyslav's education, technical skills, projects, professional experience, and contact information in a clear, concise, and visually appealing manner. It will function as an extended, interactive version of his traditional resume.
+
+1.3 Inspiration: The website's overall style, layout, and user experience should draw inspiration from https://egor-muretov.mystrikingly.com/, aiming for a clean, modern, likely single-page design with distinct sections.
+
+1.4 Target Audience: Recruiters, Hiring Managers, Technical Leads, Potential Employers within the tech industry.
+
+2. Goals & Objectives
+
+2.1 Primary Goal: To effectively present Rostyslav's qualifications and increase his visibility to potential employers, ultimately leading to interview opportunities.
+
+2.2 Key Objectives:
+
+Clearly showcase technical skills and proficiency in relevant technologies.
+
+Provide detailed descriptions and context for key projects.
+
+Highlight academic achievements and relevant coursework.
+
+Present professional experience, emphasizing relevant skills like communication and problem-solving.
+
+Offer easy access to contact information and links to professional profiles (LinkedIn, GitHub).
+
+Provide an option to download a traditional PDF version of the CV.
+
+Create a professional and polished first impression.
+
+Ensure the website is accessible and performs well on various devices.
+
+3. Functional Requirements
+
+The website should ideally be structured as a single-page application with smooth scrolling navigation between sections.
+
+3.1 Header / Hero Section:
+
+FR-H1: Display Rostyslav's full name: "Rostyslav (Ross) Muretov".
+
+FR-H2: Display a concise professional headline (e.g., "Computer Programming & Analysis Student | Aspiring Software Developer").
+
+FR-H3: Include essential contact information prominently (Email: muretovr@gmail.com).
+
+FR-H4: Include links to professional profiles (LinkedIn, GitHub - Placeholders needed if URLs not provided).
+
+FR-H5: (Optional) Include a professional headshot photo.
+
+FR-H6: Include a primary Call-to-Action (CTA) button, potentially "View My Work" linking to the Projects section or "Download CV".
+
+3.2 Navigation Bar (Optional but Recommended):
+
+FR-N1: If implemented, should be fixed or sticky at the top.
+
+FR-N2: Include links that smoothly scroll to the main sections (e.g., About, Skills, Education, Projects, Experience, Contact).
+
+3.3 About Me Section:
+
+FR-A1: Display the introductory summary paragraph from the CV, potentially slightly expanded for a more narrative feel.
+
+FR-A2: Highlight key attributes: motivated, adaptable, strong academic foundation, international experience, communication skills, quick learner, multilingual (English, Ukrainian, Russian).
+
+FR-A3: Briefly mention career goal: Seeking a challenging Co-op opportunity.
+
+3.4 Technical Skills Section:
+
+FR-S1: List all technical skills clearly.
+
+FR-S2: Categorize skills for better readability (e.g., Programming Languages, Databases, Cloud Technologies, Development Tools, Methodologies & Concepts).
+
+FR-S3: Consider using visual elements like icons or proficiency indicators (e.g., bar charts, tags) if desired, but maintain clarity.
+
+3.5 Education Section:
+
+FR-E1: Display Diploma program details: "Diploma in Computer Programming & Analysis (CPA)".
+
+FR-E2: Display Institution: "Seneca College, Toronto, ON".
+
+FR-E3: Display Expected Graduation Date: "August 2025".
+
+FR-E4: Highlight current status: "Currently in 5th Semester".
+
+FR-E5: Display GPA: "GPA: 3.8".
+
+FR-E6: Mention Academic Honors: "Recipient of President's Honour List (Semesters 2 & 4)".
+
+FR-E7: (Optional) List key relevant coursework titles.
+
+3.6 Projects Section:
+
+FR-P1: Dedicate a sub-section or card for each project listed:
+
+Cloud-Native Fragments Microservice
+
+ABC Hotel Management Application
+
+Museum Exhibit Web Application
+
+FR-P2: For each project, display:
+
+Project Title.
+
+Brief description summarizing the project's purpose.
+
+Bulleted list of key contributions, features, or technical challenges overcome (derived from CV points).
+
+List of "Technologies Used".
+
+FR-P3: (Optional but Highly Recommended) Include links to:
+
+Live Demo (if applicable and hosted).
+
+GitHub Repository (if public).
+
+FR-P4: (Optional) Include screenshots or visuals for each project.
+
+3.7 Experience Section:
+
+FR-X1: Display professional roles in reverse chronological order.
+
+FR-X2: For each role, display:
+
+Job Title.
+
+Company Name & Location.
+
+Dates of Employment.
+
+Bulleted list of key responsibilities and achievements (derived from CV points).
+
+FR-X3: Include roles: Ukraine Arrivals Support Interpreter, Reservations & Sales Agent, Client Service & Communication Roles (International).
+
+3.8 Languages Section:
+
+FR-L1: List languages spoken and fluency level (e.g., Ukrainian - Fluent, Russian - Fluent, English - Fluent, Spanish - Basic).
+
+3.9 Contact Section:
+
+FR-C1: Provide clear ways to get in touch.
+
+FR-C2: Repeat email address (muretovr@gmail.com) as a clickable mailto: link.
+
+FR-C3: Repeat links to LinkedIn and GitHub.
+
+FR-C4: Include Location (City/Province): "Concord, ON".
+
+FR-C5: (Optional) Include a simple contact form (Fields: Name, Email, Subject, Message) that forwards submissions to muretovr@gmail.com. Requires backend handling or a third-party service.
+
+FR-C6: Prominently display a "Download CV" button linking to a PDF version of the resume.
+
+3.10 Footer Section:
+
+FR-F1: Include a copyright notice (e.g., "© [Current Year] Rostyslav Muretov").
+
+FR-F2: (Optional) Link back to the top of the page.
+
+FR-F3: (Optional) Credit the platform/tools used if desired or required (e.g., "Built with Strikingly", "Powered by React").
+
+4. Non-Functional Requirements
+
+4.1 Design & User Interface (UI):
+
+NFR-D1: Clean, modern, professional aesthetic.
+
+NFR-D2: Visually similar in style (layout, typography, spacing, minimalism) to the referenced cousin's site, but tailored to Rostyslav's content.
+
+NFR-D3: Consistent typography, color scheme, and spacing throughout the site.
+
+NFR-D4: High-quality visuals (headshot, project screenshots if used).
+
+NFR-D5: Readability is paramount – sufficient contrast, legible font sizes.
+
+4.2 User Experience (UX):
+
+NFR-U1: Intuitive navigation, especially if single-page (smooth scrolling).
+
+NFR-U2: Information should be easily scannable. Use headings, bullet points, and white space effectively.
+
+NFR-U3: Clear calls to action (Contact, Download CV, View Project).
+
+4.3 Performance:
+
+NFR-P1: Fast loading times (aim for < 3 seconds on a standard connection). Optimize images and code.
+
+NFR-P2: Smooth scrolling and animations (if any).
+
+4.4 Responsiveness:
+
+NFR-R1: Fully responsive design – the website must adapt gracefully and be usable across various screen sizes (desktops, tablets, mobile phones).
+
+4.5 Accessibility:
+
+NFR-A1: Adhere to basic web accessibility guidelines (WCAG AA where feasible).
+
+NFR-A2: Use semantic HTML.
+
+NFR-A3: Provide alt text for all meaningful images.
+
+NFR-A4: Ensure sufficient color contrast.
+
+4.6 Maintainability:
+
+NFR-M1: The website structure and/or platform chosen should allow for easy updates to content (e.g., adding new projects, updating experience, changing CV PDF).
+
+4.7 Browser Compatibility:
+
+NFR-B1: Ensure compatibility with the latest versions of major web browsers (Chrome, Firefox, Safari, Edge).
+
+5. Content & Assets
+
+5.1 Text Content: All text content will be derived primarily from the provided CV document. Minor edits for flow and web context are acceptable.
+
+5.2 CV Document: An up-to-date PDF version of the CV must be available for the "Download CV" link.
+
+5.3 Images:
+
+Professional headshot (if desired).
+
+Screenshots or relevant visuals for projects (optional).
+
+5.4 Links: Accurate URLs for LinkedIn, GitHub, and any live project demos.
+
+6. Technology Stack (Suggestions)
+
+Option 1: Website Builder (Easier, Faster, Similar to Inspiration Site):
+
+Platforms like Strikingly, Carrd (good for single-page sites), Wix, Squarespace, or GitHub Pages with a template.
+
+Pros: Faster development, no coding required (or minimal), hosting often included, easy updates.
+
+Cons: Less customization, potential recurring costs, may not showcase technical skills directly.
+
+Option 2: Custom Development (Showcases Skills, More Control):
+
+Frontend: HTML5, CSS3, JavaScript. Could use a framework/library like React, Vue, or Angular if desired to showcase those skills.
+
+Styling: CSS frameworks (Bootstrap, Tailwind CSS) or custom CSS.
+
+Hosting: Netlify, Vercel, GitHub Pages (excellent for static sites), AWS S3/CloudFront.
+
+Pros: Full control over design and functionality, opportunity to demonstrate web development skills.
+
+Cons: More time-consuming to build and maintain, requires coding knowledge.
+
+7. Success Metrics
+
+Positive feedback from recruiters/contacts who view the site.
+
+Increase in profile views on LinkedIn (potentially tracked via UTM parameters).
+
+Website analytics (if implemented): Number of visits, time on page, bounce rate, clicks on contact links/CV download.
+
+Ultimately: Number of interview requests citing the website.
+
+8. Future Considerations (Post-MVP)
+
+Adding a blog section to write about technical topics or projects.
+
+Creating more detailed individual pages for each major project.
+
+Implementing more advanced animations or interactive elements.
+
+Integrating basic analytics tracking (e.g., Google Analytics).
