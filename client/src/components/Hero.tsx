@@ -47,7 +47,7 @@ export default function Hero() {
           <div className="w-full md:w-1/3 flex justify-center">
             <div className="relative w-60 h-60 rounded-full overflow-hidden border-4 border-primary shadow-lg">
               <img 
-                src="LINKEDINIMAGE.jpeg" 
+                src="LINKEDINIMAGE.png" 
                 alt="Ross Muretov"
                 className="absolute w-full h-full object-cover object-center"
               />

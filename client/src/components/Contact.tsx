@@ -137,7 +137,7 @@ export default function Contact() {
                       <FormControl>
                         <Input 
                           placeholder="Your Name" 
-                          className="w-full px-4 py-3 border border-neutral rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50"
+                          className="w-full px-4 py-3 border border-neutral rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 text-white"
                           {...field} 
                         />
                       </FormControl>
@@ -156,7 +156,7 @@ export default function Contact() {
                         <Input 
                           placeholder="your.email@example.com"
                           type="email" 
-                          className="w-full px-4 py-3 border border-neutral rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50"
+                          className="w-full px-4 py-3 border border-neutral rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 text-white"
                           {...field} 
                         />
                       </FormControl>
@@ -174,7 +174,7 @@ export default function Contact() {
                       <FormControl>
                         <Input 
                           placeholder="What is this regarding?"
-                          className="w-full px-4 py-3 border border-neutral rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50"
+                          className="w-full px-4 py-3 border border-neutral rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 text-white"
                           {...field} 
                         />
                       </FormControl>
@@ -193,7 +193,7 @@ export default function Contact() {
                         <Textarea 
                           placeholder="Your message here..."
                           rows={4}
-                          className="w-full px-4 py-3 border border-neutral rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50"
+                          className="w-full px-4 py-3 border border-neutral rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 text-white"
                           {...field} 
                         />
                       </FormControl>
