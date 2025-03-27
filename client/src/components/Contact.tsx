@@ -6,7 +6,6 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
@@ -16,39 +15,54 @@ const formSchema = z.object({
   message: z.string().min(10, { message: "Message must be at least 10 characters" }),
 });
 
-type FormValues = z.infer<typeof formSchema>;
-
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const form = useForm<FormValues>({
+  const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
       email: "",
-      subject: "",
       message: "",
     },
   });
 
-  async function onSubmit(data: FormValues) {
-    setIsSubmitting(true);
+  async function onSubmit(data: z.infer<typeof formSchema>) {
     try {
-      await apiRequest("POST", "/api/contact", data);
-      toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
+      console.log('Submitting contact form:', { ...data, message: '[Content hidden]' });
+      
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
       });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        console.error('Contact form submission failed:', result);
+        throw new Error(result.error || 'Failed to send message');
+      }
+
+      console.log('Contact form submitted successfully');
+      
+      toast({
+        title: "Success!",
+        description: "Your message has been sent. I'll get back to you soon!",
+      });
+
       form.reset();
     } catch (error) {
+      console.error('Error submitting contact form:', error);
+      
       toast({
+        variant: "destructive",
         title: "Error",
         description: "Failed to send message. Please try again later.",
-        variant: "destructive",
       });
-    } finally {
-      setIsSubmitting(false);
     }
   }
 
