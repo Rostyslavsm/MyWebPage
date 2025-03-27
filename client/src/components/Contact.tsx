@@ -52,6 +52,7 @@ export default function Contact() {
       toast({
         title: "Success!",
         description: "Your message has been sent. I'll get back to you soon!",
+        className: "text-green-500",
       });
 
       form.reset();
