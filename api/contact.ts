@@ -14,6 +14,14 @@ export default async function handler(
 
   console.log("[Contact API] Received contact form submission");
   console.log("[Contact API] Request body:", req.body);
+  console.log("[Contact API] Environment variables:", {
+    EMAIL_HOST: process.env.EMAIL_HOST,
+    EMAIL_PORT: process.env.EMAIL_PORT,
+    EMAIL_USER: process.env.EMAIL_USER,
+    EMAIL_SECURE: process.env.EMAIL_SECURE,
+    // Don't log the actual password
+    EMAIL_PASS: process.env.EMAIL_PASS ? "***" : undefined
+  });
 
   try {
     // Validate the incoming data
@@ -33,8 +41,13 @@ export default async function handler(
     });
 
     // Verify transporter configuration
-    await transporter.verify();
-    console.log("[Contact API] Email transporter verified successfully");
+    try {
+      await transporter.verify();
+      console.log("[Contact API] Email transporter verified successfully");
+    } catch (verifyError) {
+      console.error("[Contact API] Email transporter verification failed:", verifyError);
+      throw verifyError;
+    }
 
     // Send email
     const mailOptions = {
@@ -77,6 +90,7 @@ export default async function handler(
       res.status(500).json({
         success: false,
         message: "Failed to send your message. Please try again later.",
+        error: error instanceof Error ? error.message : "Unknown error",
       });
     }
   }
