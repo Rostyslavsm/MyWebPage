@@ -1,4 +1,4 @@
-import { contactFormSchema } from './schema';
+import { contactFormSchema } from './schema.ts';
 import { z } from "zod";
 import { fromZodError } from "zod-validation-error";
 import nodemailer from "nodemailer";
