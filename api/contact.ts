@@ -1,8 +1,14 @@
-import { contactFormSchema } from './schema.ts';
 import { z } from "zod";
 import { fromZodError } from "zod-validation-error";
 import nodemailer from "nodemailer";
 import type { NextApiRequest, NextApiResponse } from "next";
+
+const contactFormSchema = z.object({
+  name: z.string().min(2, 'Name must be at least 2 characters'),
+  email: z.string().email('Invalid email address'),
+  subject: z.string().min(2, 'Subject must be at least 2 characters'),
+  message: z.string().min(10, 'Message must be at least 10 characters'),
+});
 
 export default async function handler(
   req: NextApiRequest,
