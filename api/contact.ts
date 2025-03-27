@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { insertContactMessageSchema } from "../shared/schema";
+import { contactFormSchema } from "./schema";
 import nodemailer from "nodemailer";
 
 export default async function handler(
@@ -15,7 +15,7 @@ export default async function handler(
 
   try {
     // Validate the request body
-    const result = insertContactMessageSchema.parse(request.body);
+    const result = contactFormSchema.parse(request.body);
     
     console.log('Validation passed, creating transporter with config:', {
       host: process.env.EMAIL_HOST,
@@ -51,12 +51,13 @@ export default async function handler(
       from: `"Portfolio Contact Form" <${process.env.EMAIL_USER}>`,
       to: "muretovr@gmail.com",
       replyTo: result.email,
-      subject: `New Contact Message from ${result.name}`,
-      text: `Name: ${result.name}\nEmail: ${result.email}\nMessage:\n${result.message}`,
+      subject: `New Contact Message from ${result.name}: ${result.subject}`,
+      text: `Name: ${result.name}\nEmail: ${result.email}\nSubject: ${result.subject}\nMessage:\n${result.message}`,
       html: `
         <h2>New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${result.name}</p>
         <p><strong>Email:</strong> <a href="mailto:${result.email}">${result.email}</a></p>
+        <p><strong>Subject:</strong> ${result.subject}</p>
         <p><strong>Message:</strong></p>
         <p>${result.message.replace(/\n/g, '<br>')}</p>
       `,
