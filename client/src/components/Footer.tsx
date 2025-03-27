@@ -18,10 +18,10 @@ export default function Footer() {
           
           <div className="flex flex-col items-center md:items-end">
             <div className="flex space-x-4 mb-4">
-              <a href="https://linkedin.com/" className="w-8 h-8 bg-white/20 text-white rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+              <a href="https://www.linkedin.com/in/rostyslav-muretov-062a84202/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white/20 text-white rounded-full flex items-center justify-center hover:bg-primary transition-colors">
                 <i className='bx bxl-linkedin'></i>
               </a>
-              <a href="https://github.com/" className="w-8 h-8 bg-white/20 text-white rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+              <a href="https://github.com/Rostyslavsm" className="w-8 h-8 bg-white/20 text-white rounded-full flex items-center justify-center hover:bg-primary transition-colors">
                 <i className='bx bxl-github'></i>
               </a>
               <a href="mailto:muretovr@gmail.com" className="w-8 h-8 bg-white/20 text-white rounded-full flex items-center justify-center hover:bg-primary transition-colors">
@@ -33,9 +33,12 @@ export default function Footer() {
         </div>
         
         <div className="mt-6 pt-6 border-t border-white/10 text-center">
-          <a href="#" className="inline-flex items-center text-white/60 hover:text-white transition-colors">
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="inline-flex items-center text-white/60 hover:text-white transition-colors cursor-pointer"
+          >
             <i className='bx bx-up-arrow-alt mr-1'></i> Back to Top
-          </a>
+          </button>
         </div>
       </div>
     </footer>

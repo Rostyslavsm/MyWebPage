@@ -22,7 +22,7 @@ export default function Hero() {
                 </Button>
               </a>
               <a href="#projects">
-                <Button variant="outline" className="px-6 py-6 border-2 border-primary text-primary rounded-lg hover:bg-primary hover:text-white transition-colors font-medium flex items-center gap-2 h-auto">
+                <Button variant="outline" className="px-6 py-6 border-2 border-primary text-white rounded-lg hover:bg-secondary/80 transition-colors font-medium flex items-center gap-2 h-auto">
                   <i className='bx bx-code-alt'></i> View My Work
                 </Button>
               </a>
@@ -36,19 +36,21 @@ export default function Hero() {
               <a href="mailto:muretovr@gmail.com" className="text-secondary hover:text-primary transition-colors">
                 <i className='bx bx-envelope text-2xl'></i>
               </a>
-              <a href="https://github.com/" className="text-secondary hover:text-primary transition-colors">
+              <a href="https://github.com/Rostyslavsm" className="text-secondary hover:text-primary transition-colors">
                 <i className='bx bxl-github text-2xl'></i>
               </a>
-              <a href="https://linkedin.com/" className="text-secondary hover:text-primary transition-colors">
+              <a href="https://linkedin.com/in/rostyslav-muretov-062a84202/" className="text-secondary hover:text-primary transition-colors">
                 <i className='bx bxl-linkedin text-2xl'></i>
               </a>
             </div>
           </div>
           <div className="w-full md:w-1/3 flex justify-center">
-            <div className="relative w-60 h-60 rounded-full overflow-hidden border-4 border-primary">
-              <div className="w-full h-full bg-primary/10 flex items-center justify-center text-primary">
-                <i className='bx bx-user text-6xl'></i>
-              </div>
+            <div className="relative w-60 h-60 rounded-full overflow-hidden border-4 border-primary shadow-lg">
+              <img 
+                src="LINKEDINIMAGE.jpeg" 
+                alt="Ross Muretov"
+                className="absolute w-full h-full object-cover object-center"
+              />
             </div>
           </div>
         </div>

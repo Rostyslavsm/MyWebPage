@@ -102,10 +102,10 @@ export default function Contact() {
               <div className="mt-10">
                 <h4 className="font-semibold text-secondary mb-4">Connect With Me</h4>
                 <div className="flex space-x-4">
-                  <a href="https://linkedin.com/" className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-accent transition-colors">
+                  <a href="https://www.linkedin.com/in/rostyslav-muretov-062a84202/" className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-accent transition-colors">
                     <i className='bx bxl-linkedin'></i>
                   </a>
-                  <a href="https://github.com/" className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-accent transition-colors">
+                  <a href="https://github.com/Rostyslavsm" className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-accent transition-colors">
                     <i className='bx bxl-github'></i>
                   </a>
                   <a href="mailto:muretovr@gmail.com" className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-accent transition-colors">

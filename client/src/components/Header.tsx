@@ -28,7 +28,7 @@ export default function Header() {
   };
 
   return (
-    <header className={`w-full fixed top-0 bg-white z-50 ${isScrolled ? 'shadow-sm' : ''}`}>
+    <header className={`w-full fixed top-0 bg-white z-50 transition-shadow duration-300 ${isScrolled ? 'shadow-sm' : ''}`}>
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
         <a href="#" className="font-sans font-bold text-xl text-primary">Ross Muretov</a>
         
@@ -57,7 +57,11 @@ export default function Header() {
       </nav>
       
       {/* Mobile Navigation */}
-      <div className={`md:hidden bg-white w-full ${isMenuOpen ? '' : 'hidden'}`}>
+      <div 
+        className={`md:hidden bg-white w-full transition-all duration-300 ease-in-out overflow-hidden ${
+          isMenuOpen ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
         <div className="container mx-auto px-4 py-3 flex flex-col space-y-3">
           <a href="#about" className="py-2 text-secondary hover:text-primary transition-colors" onClick={closeMenu}>About</a>
           <a href="#skills" className="py-2 text-secondary hover:text-primary transition-colors" onClick={closeMenu}>Skills</a>

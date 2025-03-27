@@ -1,17 +1,37 @@
+import { motion } from "framer-motion"; // Import motion
+
 export default function About() {
+  // Define animation variants
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 50 }, // Start hidden and slightly down
+    visible: {
+      opacity: 1,
+      y: 0, // Animate to visible and original position
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
   return (
-    <section id="about" className="py-20 bg-white">
+    // Wrap the section with motion.section and apply variants
+    <motion.section
+      id="about"
+      className="py-20 bg-white"
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }} // Trigger once when 20% is visible
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-secondary">About Me</h2>
           <div className="h-1 w-20 bg-primary mx-auto mt-2"></div>
         </div>
-        
+
         <div className="max-w-4xl mx-auto">
           <p className="text-lg text-secondary/80 leading-relaxed mb-6">
             I am a highly motivated and adaptable Computer Programming & Analysis student currently in my 5th Semester at Seneca College. I combine a strong academic foundation in full-stack development, database management, cloud computing (AWS), and CI/CD practices with extensive international experience.
           </p>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
             <div className="bg-neutral/30 p-6 rounded-lg">
               <div className="flex items-center mb-4">
@@ -37,7 +57,7 @@ export default function About() {
                 </li>
               </ul>
             </div>
-            
+
             <div className="bg-neutral/30 p-6 rounded-lg">
               <div className="flex items-center mb-4">
                 <i className='bx bx-target-lock text-2xl text-primary mr-3'></i>
@@ -55,6 +75,6 @@ export default function About() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section> // Close motion.section
   );
 }

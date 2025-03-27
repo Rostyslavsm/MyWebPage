@@ -1,4 +1,5 @@
-import { users, type User, type InsertUser, contactMessages, type ContactMessage, type InsertContactMessage } from "@shared/schema";
+// Remove ContactMessage types from import
+import { users, type User, type InsertUser } from "@shared/schema";
 
 // modify the interface with any CRUD methods
 // you might need
@@ -7,21 +8,21 @@ export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
-  createContactMessage(message: InsertContactMessage): Promise<ContactMessage>;
-  getContactMessages(): Promise<ContactMessage[]>;
+  // Removed createContactMessage(message: InsertContactMessage): Promise<ContactMessage>;
+  // Removed getContactMessages(): Promise<ContactMessage[]>;
 }
 
 export class MemStorage implements IStorage {
   private users: Map<number, User>;
-  private contactMessages: Map<number, ContactMessage>;
+  // Removed private contactMessages: Map<number, ContactMessage>;
   private userCurrentId: number;
-  private messageCurrentId: number;
+  // Removed private messageCurrentId: number;
 
   constructor() {
     this.users = new Map();
-    this.contactMessages = new Map();
+    // Removed this.contactMessages = new Map();
     this.userCurrentId = 1;
-    this.messageCurrentId = 1;
+    // Removed this.messageCurrentId = 1;
   }
 
   async getUser(id: number): Promise<User | undefined> {
@@ -41,17 +42,9 @@ export class MemStorage implements IStorage {
     return user;
   }
 
-  async createContactMessage(insertMessage: InsertContactMessage): Promise<ContactMessage> {
-    const id = this.messageCurrentId++;
-    const createdAt = new Date().toISOString();
-    const message: ContactMessage = { ...insertMessage, id, createdAt };
-    this.contactMessages.set(id, message);
-    return message;
-  }
+  // Removed async createContactMessage(...) { ... }
 
-  async getContactMessages(): Promise<ContactMessage[]> {
-    return Array.from(this.contactMessages.values());
-  }
+  // Removed async getContactMessages(...) { ... }
 }
 
 export const storage = new MemStorage();
