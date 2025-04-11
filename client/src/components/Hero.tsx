@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import heroAnimation from "@/assets/hero-animation.gif";
 
 export default function Hero() {
   return (
@@ -45,16 +46,13 @@ export default function Hero() {
             </div>
           </div>
           <div className="w-full md:w-1/3 flex justify-center">
-            <div className="card relative">
-              <div className="circle before:content-[''] before:absolute before:top-[30px] before:left-[2px] before:right-[2px] before:w-[350px] before:h-[350px] before:rounded-full before:bg-[#111111] before:border-8 before:border-[#8b5cf6] before:transition-all before:duration-500 before:shadow-[0_0_50px_#8b5cf6] before:[animation:pulse_4s_ease-in-out_infinite]">
-                <div className="relative w-[350px] h-[350px] rounded-full overflow-hidden z-10 top-[30px]">
-                  <img 
-                    src="LINKEDINIMAGE.png" 
-                    alt="Ross Muretov"
-                    className="absolute w-full h-full object-cover object-center"
-                  />
-                </div>
-              </div>
+            <div className="relative w-[400px] h-[400px] flex items-center justify-center">
+              <div className="absolute inset-0 bg-[#8b5cf6] rounded-full opacity-20 blur-3xl animate-pulse"></div>
+              <img 
+                src={heroAnimation} 
+                alt="Animated Code"
+                className="relative w-full h-full object-contain z-10"
+              />
             </div>
           </div>
         </div>
