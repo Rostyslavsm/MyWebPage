@@ -90,7 +90,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-white">Email</h4>
-                  <a href="mailto:muretovr@gmail.com" className="text-[#8b5cf6] hover:text-[#9f75ff] transition-colors">muretovr@gmail.com</a>
+                  <a href="mailto:muretovr@gmail.com" className="text-[#8b5cf6] hover:text-[#9f75ff] transition-colors shadow-[0_0_10px_rgba(255,255,255,0.2)] hover:shadow-[0_0_15px_rgba(255,255,255,0.4)] px-2 py-1 rounded">muretovr@gmail.com</a>
                 </div>
               </div>
               
@@ -110,27 +110,27 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-white">Phone</h4>
-                  <a href="tel:+13653557723" className="text-[#8b5cf6] hover:text-[#9f75ff] transition-colors">(365) 355-7723</a>
+                  <a href="tel:+13653557723" className="text-[#8b5cf6] hover:text-[#9f75ff] transition-colors shadow-[0_0_10px_rgba(255,255,255,0.2)] hover:shadow-[0_0_15px_rgba(255,255,255,0.4)] px-2 py-1 rounded">(365) 355-7723</a>
                 </div>
               </div>
               
               <div className="mt-10">
                 <h4 className="font-semibold text-white mb-4">Connect With Me</h4>
                 <div className="flex space-x-4">
-                  <a href="https://www.linkedin.com/in/rostyslav-muretov-062a84202/" className="w-10 h-10 bg-[#8b5cf6] text-white rounded-full flex items-center justify-center hover:bg-[#9f75ff] transition-colors">
+                  <a href="https://www.linkedin.com/in/rostyslav-muretov-062a84202/" className="w-10 h-10 bg-[#8b5cf6] text-white rounded-full flex items-center justify-center hover:bg-[#9f75ff] transition-colors shadow-[0_0_10px_rgba(255,255,255,0.2)] hover:shadow-[0_0_15px_rgba(255,255,255,0.4)]">
                     <i className='bx bxl-linkedin'></i>
                   </a>
-                  <a href="https://github.com/Rostyslavsm" className="w-10 h-10 bg-[#8b5cf6] text-white rounded-full flex items-center justify-center hover:bg-[#9f75ff] transition-colors">
+                  <a href="https://github.com/Rostyslavsm" className="w-10 h-10 bg-[#8b5cf6] text-white rounded-full flex items-center justify-center hover:bg-[#9f75ff] transition-colors shadow-[0_0_10px_rgba(255,255,255,0.2)] hover:shadow-[0_0_15px_rgba(255,255,255,0.4)]">
                     <i className='bx bxl-github'></i>
                   </a>
-                  <a href="mailto:muretovr@gmail.com" className="w-10 h-10 bg-[#8b5cf6] text-white rounded-full flex items-center justify-center hover:bg-[#9f75ff] transition-colors">
+                  <a href="mailto:muretovr@gmail.com" className="w-10 h-10 bg-[#8b5cf6] text-white rounded-full flex items-center justify-center hover:bg-[#9f75ff] transition-colors shadow-[0_0_10px_rgba(255,255,255,0.2)] hover:shadow-[0_0_15px_rgba(255,255,255,0.4)]">
                     <i className='bx bx-envelope'></i>
                   </a>
                 </div>
               </div>
               
               <div className="mt-6">
-                <a href="/Rostyslav_Muretov_CV.pdf" download className="px-6 py-3 bg-[#8b5cf6] text-white rounded-lg hover:bg-[#9f75ff] transition-colors font-medium flex items-center gap-2 w-max">
+                <a href="/Rostyslav_Muretov_CV.pdf" download className="px-6 py-3 bg-[#8b5cf6] text-white rounded-lg hover:bg-[#9f75ff] transition-colors font-medium flex items-center gap-2 w-max shadow-[0_0_15px_rgba(255,255,255,0.35)] hover:shadow-[0_0_20px_rgba(255,255,255,0.55)]">
                   <i className='bx bxs-download'></i> Download CV
                 </a>
               </div>
@@ -220,7 +220,7 @@ export default function Contact() {
                 <Button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="w-full px-6 py-3 bg-[#8b5cf6] text-white rounded-lg hover:bg-[#9f75ff] transition-colors font-medium flex items-center justify-center gap-2"
+                  className="w-full px-6 py-3 bg-[#8b5cf6] text-white rounded-lg hover:bg-[#9f75ff] transition-colors font-medium flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(255,255,255,0.35)] hover:shadow-[0_0_20px_rgba(255,255,255,0.55)]"
                 >
                   {isSubmitting ? (
                     <>
