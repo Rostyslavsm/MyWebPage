@@ -76,15 +76,14 @@ export default function About() {
               className="w-full lg:w-2/5 mb-8 lg:mb-0"
               variants={portraitVariants}
             >
-              <div className="card relative mx-auto max-w-[350px] lg:max-w-[400px] xl:max-w-[450px] lg:-mr-12">
-                <div className="circle before:content-[''] before:absolute before:top-[30px] before:left-[2px] before:right-[2px] before:w-[350px] before:h-[350px] lg:before:w-[400px] lg:before:h-[400px] xl:before:w-[450px] xl:before:h-[450px] before:rounded-full before:bg-[#111111] before:border-8 before:border-[#8b5cf6] before:transition-all before:duration-500 before:shadow-[0_0_50px_#8b5cf6] before:[animation:pulse_4s_ease-in-out_infinite]">
-                  <div className="relative w-[350px] h-[350px] lg:w-[400px] lg:h-[400px] xl:w-[450px] xl:h-[450px] rounded-full overflow-hidden z-10 top-[30px]">
-                    <img 
-                      src="LINKEDINIMAGE.png" 
-                      alt="Ross Muretov"
-                      className="absolute w-full h-full object-cover object-center"
-                    />
-                  </div>
+              <div className="relative mx-auto max-w-[350px] lg:max-w-[400px] xl:max-w-[450px] lg:-mr-12">
+                {/* Single div with image and border - no pseudo-elements */}
+                <div className="w-[350px] h-[350px] lg:w-[400px] lg:h-[400px] xl:w-[450px] xl:h-[450px] rounded-full overflow-hidden border-8 border-[#8b5cf6] shadow-[0_0_50px_#8b5cf6] transition-all duration-500">
+                  <img 
+                    src="LINKEDINIMAGE.png" 
+                    alt="Ross Muretov"
+                    className="w-full h-full object-cover object-center"
+                  />
                 </div>
               </div>
             </motion.div>
