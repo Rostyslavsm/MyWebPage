@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { resumeData } from "@/data/resumeData";
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+// Removed: import { useInView } from "react-intersection-observer";
 
 // Tech icons mapping
 const techIcons: { [key: string]: string } = {
@@ -17,14 +17,14 @@ const techIcons: { [key: string]: string } = {
   "C": "bx-code",
   "Lua": "bx-code-block",
   "Node.js": "bxl-nodejs",
-  
+
   // Databases
   "MongoDB": "bxl-mongodb",
   "Oracle SQL": "bx-data",
   "MySQL": "bxs-data",
   "SQL Server": "bx-server",
   "DynamoDB": "bxs-cloud",
-  
+
   // Cloud Technologies
   "AWS": "bxl-amazon",
   "AWS (ECS, ECR, S3)": "bxl-amazon",
@@ -32,7 +32,7 @@ const techIcons: { [key: string]: string } = {
   "AWS (EC2 Basics)": "bxl-amazon",
   "Docker": "bxl-docker",
   "Docker Compose": "bxs-dock-right",
-  
+
   // Development Tools
   "Git": "bxl-git",
   "GitHub": "bxl-github",
@@ -43,12 +43,12 @@ const techIcons: { [key: string]: string } = {
   "Eclipse": "bx-sun",
   "Hurl": "bx-link",
   "Hurl (API Testing)": "bx-link",
-  
+
   // Operating Systems
   "Windows": "bxl-windows",
   "Linux": "bxl-tux",
   "Linux/Unix": "bxl-tux",
-  
+
   // Methodologies & Concepts
   "Object-Oriented Programming": "bx-extension",
   "Data Structures & Algorithms": "bx-list-check",
@@ -71,38 +71,40 @@ const getTechColor = (category: string, index: number): string => {
     "operatingSystems": ["#0078D6", "#FCC624"],
     "methodologies": ["#007396", "#777BB4", "#61DAFB", "#000000", "#5DC9E2", "#FF6F00", "#4CAF50", "#F44336"],
   };
-  
+
   // Default to a dark purple if category not found
   const categoryColors = colors[category as keyof typeof colors] || ["#8b5cf6"];
-  
+
   // Loop through available colors based on index
   return categoryColors[index % categoryColors.length];
 };
 
 // Component for individual tech card
-const TechCard = ({ tech, category, index, isVisible }: { tech: string, category: string, index: number, isVisible: boolean }) => {
+// Removed isVisible prop and its usage
+const TechCard = ({ tech, category, index }: { tech: string, category: string, index: number }) => {
   const bgColor = getTechColor(category, index);
   const iconClass = techIcons[tech] || "bx-code"; // Default to code icon if not found
-  
+
   return (
-    <motion.div 
+    <motion.div
       className="flex flex-col items-center justify-center p-4 rounded-lg bg-[#111111] border border-[#222222] hover:border-[#8b5cf6]/50 transition-all w-[140px]"
       initial={{ opacity: 0, y: 20 }}
-      animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      // Changed animation to always animate to the visible state
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: index * 0.05 }}
       whileHover={{ y: -5, transition: { duration: 0.2 } }}
     >
-      <div 
+      <div
         className="w-16 h-16 rounded-lg flex items-center justify-center mb-3"
         style={{ backgroundColor: `${bgColor}30` }} // 30% opacity version of the color
       >
-        <i 
-          className={`bx ${iconClass} text-3xl`} 
-          style={{ 
+        <i
+          className={`bx ${iconClass} text-3xl`}
+          style={{
             color: bgColor,
-            filter: iconClass === 'bxl-github' || 
-                    iconClass === 'bx-broadcast' || 
-                    iconClass === 'bx-sun' || 
+            filter: iconClass === 'bxl-github' ||
+                    iconClass === 'bx-broadcast' ||
+                    iconClass === 'bx-sun' ||
                     iconClass === 'bx-link' ? 'drop-shadow(0 0 2px white)' : 'none'
           }}
         ></i>
@@ -115,18 +117,19 @@ const TechCard = ({ tech, category, index, isVisible }: { tech: string, category
 export default function Skills() {
   // State for active category
   const [activeCategory, setActiveCategory] = useState("programmingLanguages");
-  
-  const { ref, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: false
-  });
 
-  useEffect(() => {
-    if (inView) {
-      document.dispatchEvent(new CustomEvent('sectionInView', { detail: 'skills' }));
-    }
-  }, [inView]);
-  
+  // Removed: useInView hook call
+  // const { ref, inView } = useInView({
+  //   threshold: 0.1,
+  //   triggerOnce: false
+  // });
+
+  // Removed: useEffect that depended on inView
+  // If the event dispatch is still needed unconditionally, add it back without the inView check:
+  // useEffect(() => {
+  //   document.dispatchEvent(new CustomEvent('sectionInView', { detail: 'skills' }));
+  // }, []); // Empty dependency array means it runs once on mount
+
   // Categories data with icons and labels
   const categories = [
     { id: "programmingLanguages", label: "Programming Languages", icon: "bx-code-alt" },
@@ -138,13 +141,13 @@ export default function Skills() {
   ];
 
   return (
-    <section id="skills" className="py-20" ref={ref}>
+    // Removed ref={ref} from section
+    <section id="skills" className="py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Glassmorphic Two-Row Menu */}
-        <div className={`relative mb-12 transition-all duration-1000 ${
-          inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-        }`}>
+        {/* Removed conditional opacity/translate based on inView, set directly to visible state */}
+        <div className={`relative mb-12 transition-all duration-1000 opacity-100 translate-y-0`}>
           <div className="backdrop-blur-md bg-[#111111]/40 border border-[#ffffff10] mx-auto max-w-5xl overflow-hidden">
             {/* First row - first 3 buttons */}
             <div className="grid grid-cols-3 w-full">
@@ -153,8 +156,8 @@ export default function Skills() {
                   key={category.id}
                   onClick={() => setActiveCategory(category.id)}
                   className={`py-4 flex flex-col items-center justify-center transition-all duration-300 border-r border-[#ffffff10] last:border-r-0 ${
-                    activeCategory === category.id 
-                      ? "bg-[#8b5cf6]/20 text-white" 
+                    activeCategory === category.id
+                      ? "bg-[#8b5cf6]/20 text-white"
                       : "bg-[#ffffff05] text-gray-300 hover:bg-[#ffffff10]"
                   }`}
                 >
@@ -163,7 +166,7 @@ export default function Skills() {
                 </button>
               ))}
             </div>
-            
+
             {/* Second row - last 3 buttons */}
             <div className="grid grid-cols-3 w-full border-t border-[#ffffff10]">
               {categories.slice(3).map((category) => (
@@ -171,8 +174,8 @@ export default function Skills() {
                   key={category.id}
                   onClick={() => setActiveCategory(category.id)}
                   className={`py-4 flex flex-col items-center justify-center transition-all duration-300 border-r border-[#ffffff10] last:border-r-0 ${
-                    activeCategory === category.id 
-                      ? "bg-[#8b5cf6]/20 text-white" 
+                    activeCategory === category.id
+                      ? "bg-[#8b5cf6]/20 text-white"
                       : "bg-[#ffffff05] text-gray-300 hover:bg-[#ffffff10]"
                   }`}
                 >
@@ -183,27 +186,27 @@ export default function Skills() {
             </div>
           </div>
         </div>
-        
+
         {/* Tech Cards Grid */}
-        <motion.div 
+        <motion.div
           className="flex flex-wrap justify-center gap-4"
           initial="initial"
           animate="animate"
           variants={{
             initial: { opacity: 0 },
-            animate: { 
+            animate: {
               opacity: 1,
               transition: { staggerChildren: 0.05 }
             }
           }}
         >
           {(resumeData.skills[activeCategory as keyof typeof resumeData.skills] as string[]).map((tech, index) => (
-            <TechCard 
-              key={tech} 
-              tech={tech} 
+            <TechCard
+              key={tech}
+              tech={tech}
               category={activeCategory}
               index={index}
-              isVisible={inView}
+              // Removed isVisible prop
             />
           ))}
         </motion.div>
