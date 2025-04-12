@@ -142,7 +142,7 @@ export default function Contact() {
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }}
+      viewport={{ once: false, amount: 0.1 }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 

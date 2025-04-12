@@ -88,7 +88,7 @@ export default function Experience() {
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }}
+      viewport={{ once: false, amount: 0.1 }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
@@ -110,7 +110,7 @@ export default function Experience() {
               className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-[#222222]"
               initial={{ scaleY: 0, originY: 0 }}
               whileInView={{ scaleY: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
             ></motion.div>
             
@@ -119,7 +119,7 @@ export default function Experience() {
                 key={index} 
                 className="relative z-10 mb-12"
                 variants={index % 2 === 0 ? cardRightVariants : cardLeftVariants}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: false, amount: 0.3 }}
               >
                 <div className="hidden md:flex items-center justify-center">
                   <motion.div 
@@ -158,7 +158,7 @@ export default function Experience() {
                               initial={{ opacity: 0, x: 20 }}
                               whileInView={{ opacity: 1, x: 0 }}
                               transition={{ delay: idx * 0.1, duration: 0.4 }}
-                              viewport={{ once: true }}
+                              viewport={{ once: false }}
                             >
                               {resp}
                             </motion.li>
@@ -188,7 +188,7 @@ export default function Experience() {
                               initial={{ opacity: 0, x: -20 }}
                               whileInView={{ opacity: 1, x: 0 }}
                               transition={{ delay: idx * 0.1, duration: 0.4 }}
-                              viewport={{ once: true }}
+                              viewport={{ once: false }}
                             >
                               {resp}
                             </motion.li>
