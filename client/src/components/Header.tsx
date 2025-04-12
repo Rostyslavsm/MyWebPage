@@ -73,7 +73,10 @@ export default function Header() {
         : 'bg-transparent'
     }`}>
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-        <a href="#" className="font-sans font-bold text-xl text-[#8b5cf6] hover:text-[#9f75ff] transition-colors">Ross Muretov</a>
+        <a href="#" className="font-sans font-bold text-xl text-[#8b5cf6] hover:text-[#9f75ff] transition-colors flex items-center">
+          <i className='bx bxs-home text-xl mr-2'></i>
+          Ross Muretov
+        </a>
         
         {/* Mobile menu button */}
         <button 
