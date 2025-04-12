@@ -139,7 +139,7 @@ export default function Experience() {
           className="text-center mb-12"
           variants={titleVariants}
         >
-          <h2 className="text-3xl font-bold text-white">Professional Experience</h2>
+          <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-500 to-indigo-400 text-transparent bg-clip-text">Professional Experience</h2>
           <div className="h-1 w-20 bg-[#8b5cf6] mx-auto mt-2"></div>
         </motion.div>
         
