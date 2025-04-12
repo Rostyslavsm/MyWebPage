@@ -80,7 +80,6 @@ const getTechColor = (category: string, index: number): string => {
 };
 
 // Component for individual tech card
-// Removed isVisible prop and its usage
 const TechCard = ({ tech, category, index }: { tech: string, category: string, index: number }) => {
   const bgColor = getTechColor(category, index);
   const iconClass = techIcons[tech] || "bx-code"; // Default to code icon if not found
@@ -88,11 +87,15 @@ const TechCard = ({ tech, category, index }: { tech: string, category: string, i
   return (
     <motion.div
       className="flex flex-col items-center justify-center p-4 rounded-lg bg-[#111111] border border-[#222222] hover:border-[#8b5cf6]/50 transition-all w-[140px]"
-      initial={{ opacity: 0, y: 20 }}
-      // Changed animation to always animate to the visible state
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay: index * 0.05 }}
-      whileHover={{ y: -5, transition: { duration: 0.2 } }}
+      variants={{
+        hidden: { opacity: 0, y: 30 },
+        visible: { 
+          opacity: 1, 
+          y: 0,
+          transition: { duration: 0.5, ease: "easeOut" }
+        }
+      }}
+      whileHover={{ y: -5, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.15)", transition: { duration: 0.2 } }}
     >
       <div
         className="w-16 h-16 rounded-lg flex items-center justify-center mb-3"
@@ -118,17 +121,33 @@ export default function Skills() {
   // State for active category
   const [activeCategory, setActiveCategory] = useState("programmingLanguages");
 
-  // Removed: useInView hook call
-  // const { ref, inView } = useInView({
-  //   threshold: 0.1,
-  //   triggerOnce: false
-  // });
-
-  // Removed: useEffect that depended on inView
-  // If the event dispatch is still needed unconditionally, add it back without the inView check:
-  // useEffect(() => {
-  //   document.dispatchEvent(new CustomEvent('sectionInView', { detail: 'skills' }));
-  // }, []); // Empty dependency array means it runs once on mount
+  // Define animation variants
+  const sectionVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { 
+        duration: 0.6, 
+        ease: "easeOut",
+        when: "beforeChildren",
+        staggerChildren: 0.1
+      }
+    }
+  };
+  
+  const menuVariants = {
+    hidden: { opacity: 0, y: -30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { 
+        duration: 0.7, 
+        ease: "easeOut",
+        type: "spring",
+        damping: 15
+      }
+    }
+  };
 
   // Categories data with icons and labels
   const categories = [
@@ -141,13 +160,21 @@ export default function Skills() {
   ];
 
   return (
-    // Removed ref={ref} from section
-    <section id="skills" className="py-20">
+    <motion.section 
+      id="skills" 
+      className="py-20 overflow-hidden"
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Glassmorphic Two-Row Menu */}
-        {/* Removed conditional opacity/translate based on inView, set directly to visible state */}
-        <div className={`relative mb-12 transition-all duration-1000 opacity-100 translate-y-0`}>
+        <motion.div 
+          className="relative mb-12"
+          variants={menuVariants}
+        >
           <div className="backdrop-blur-md bg-[#111111]/40 border border-[#ffffff10] mx-auto max-w-5xl overflow-hidden">
             {/* First row - first 3 buttons */}
             <div className="grid grid-cols-3 w-full">
@@ -185,18 +212,19 @@ export default function Skills() {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Tech Cards Grid */}
         <motion.div
           className="flex flex-wrap justify-center gap-4"
-          initial="initial"
-          animate="animate"
           variants={{
-            initial: { opacity: 0 },
-            animate: {
+            hidden: { opacity: 0 },
+            visible: {
               opacity: 1,
-              transition: { staggerChildren: 0.05 }
+              transition: { 
+                staggerChildren: 0.05,
+                delayChildren: 0.2
+              }
             }
           }}
         >
@@ -206,11 +234,10 @@ export default function Skills() {
               tech={tech}
               category={activeCategory}
               index={index}
-              // Removed isVisible prop
             />
           ))}
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }
