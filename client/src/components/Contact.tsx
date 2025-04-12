@@ -54,12 +54,16 @@ export default function Contact() {
           height: 200%;
           background: linear-gradient(to right, #8b5cf6, #9f75ff, #6d28d9);
           transform-origin: center;
-          animation: glowing 10s linear infinite;
+          animation: glowing 13s linear infinite;
           z-index: 1;
         }
         
+        .card-box.cyan::before {
+          background: linear-gradient(to right, #06b6d4, #22d3ee, #0891b2, #0e7490);
+        }
+        
         .card-box.reverse::before {
-          animation: glowing-reverse 12s linear infinite;
+          animation: glowing-reverse 16s linear infinite;
         }
         
         .card {
@@ -241,7 +245,7 @@ export default function Contact() {
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Contact Information */}
           <motion.div 
-            className="card-box"
+            className="card-box cyan"
             variants={cardVariants}
           >
             <div className="card p-8">

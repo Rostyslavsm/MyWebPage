@@ -70,13 +70,13 @@ export default function About() {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16 xl:gap-20">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24 xl:gap-32">
             {/* Portrait Section - slide in from bottom */}
             <motion.div 
-              className="w-full lg:w-1/3"
+              className="w-full lg:w-2/5 mb-8 lg:mb-0"
               variants={portraitVariants}
             >
-              <div className="card relative mx-auto max-w-[350px] lg:max-w-[400px] xl:max-w-[450px]">
+              <div className="card relative mx-auto max-w-[350px] lg:max-w-[400px] xl:max-w-[450px] lg:-mr-12">
                 <div className="circle before:content-[''] before:absolute before:top-[30px] before:left-[2px] before:right-[2px] before:w-[350px] before:h-[350px] lg:before:w-[400px] lg:before:h-[400px] xl:before:w-[450px] xl:before:h-[450px] before:rounded-full before:bg-[#111111] before:border-8 before:border-[#8b5cf6] before:transition-all before:duration-500 before:shadow-[0_0_50px_#8b5cf6] before:[animation:pulse_4s_ease-in-out_infinite]">
                   <div className="relative w-[350px] h-[350px] lg:w-[400px] lg:h-[400px] xl:w-[450px] xl:h-[450px] rounded-full overflow-hidden z-10 top-[30px]">
                     <img 
@@ -90,7 +90,7 @@ export default function About() {
             </motion.div>
 
             {/* Content Section - text slides in from right */}
-            <div className="w-full lg:w-2/3">
+            <div className="w-full lg:w-3/5">
               <motion.div 
                 className="space-y-6 lg:space-y-8"
                 variants={textVariants}
