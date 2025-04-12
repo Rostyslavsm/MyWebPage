@@ -1,7 +1,23 @@
 import { resumeData } from "@/data/resumeData";
 import { motion } from "framer-motion";
+import Lottie from "lottie-react";
+import heartAnimation from "@/assets/Heart.json";
+import { useMemo } from "react";
 
 export default function Experience() {
+  // Create a slowed down version of the animation
+  const slowHeartAnimation = useMemo(() => {
+    // Create a deep copy of the animation
+    const animationCopy = JSON.parse(JSON.stringify(heartAnimation));
+    
+    // Divide the frame rate by 4 to slow down the animation by 4x
+    if (animationCopy.fr) {
+      animationCopy.fr = animationCopy.fr / 4;
+    }
+    
+    return animationCopy;
+  }, []);
+
   // Define animation variants
   const sectionVariants = {
     hidden: { opacity: 0 },
@@ -121,6 +137,24 @@ export default function Experience() {
                 variants={index % 2 === 0 ? cardRightVariants : cardLeftVariants}
                 viewport={{ once: false, amount: 0.3 }}
               >
+                {index === 0 && (
+                  <motion.div 
+                    className="relative md:absolute md:w-5/12 md:left-0 md:top-0 transform hidden md:flex justify-end items-start z-20"
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: false }}
+                    transition={{ duration: 1.2, delay: 0.3 }}
+                  >
+                    <div className="w-80 h-80 md:w-96 md:h-96 relative opacity-45">
+                      <Lottie 
+                        animationData={slowHeartAnimation}
+                        className="w-full h-full"
+                        loop={true}
+                      />
+                    </div>
+                  </motion.div>
+                )}
+                
                 <div className="hidden md:flex items-center justify-center">
                   <motion.div 
                     className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#222222] bg-[#111111] absolute left-1/2 transform -translate-x-1/2"
