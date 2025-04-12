@@ -12,25 +12,6 @@
   }
 
   body {
-    @apply font-sans antialiased text-foreground; /* Removed bg-background */
-    background-image: url('/src/assets/background.jpg'); /* Path relative to the client source root */
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    position: relative; /* Needed for the pseudo-element */
-    z-index: 0; /* Ensure body context is correct for z-index */
-    /* Keep existing Tailwind utilities if needed, but background is now handled manually */
-  }
-
-  body::before {
-    content: '';
-    position: fixed; /* Cover the viewport */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black overlay (adjust 0.6 for darkness) */
-    z-index: -1; /* Place overlay behind content, on top of body background */
+    @apply font-sans antialiased bg-background text-foreground;
   }
 }
