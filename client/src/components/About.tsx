@@ -85,7 +85,7 @@ export default function About() {
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }} // Trigger once when 20% is visible
+      viewport={{ once: false, amount: 0.5 }} // Trigger every time 50% is visible
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
