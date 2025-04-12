@@ -2,6 +2,8 @@ import { resumeData } from "@/data/resumeData";
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
 import heartAnimation from "@/assets/Heart.json";
+import pcAnimation from "@/assets/pc.json";
+import guitarAnimation from "@/assets/guitar.json";
 import { useMemo } from "react";
 
 export default function Experience() {
@@ -11,6 +13,32 @@ export default function Experience() {
     const animationCopy = JSON.parse(JSON.stringify(heartAnimation));
     
     // Divide the frame rate by 4 to slow down the animation by 4x
+    if (animationCopy.fr) {
+      animationCopy.fr = animationCopy.fr / 4;
+    }
+    
+    return animationCopy;
+  }, []);
+
+  // Create a slowed down version of the PC animation
+  const slowPcAnimation = useMemo(() => {
+    // Create a deep copy of the animation
+    const animationCopy = JSON.parse(JSON.stringify(pcAnimation));
+    
+    // Slow down the animation
+    if (animationCopy.fr) {
+      animationCopy.fr = animationCopy.fr / 4;
+    }
+    
+    return animationCopy;
+  }, []);
+
+  // Create a slowed down version of the Guitar animation
+  const slowGuitarAnimation = useMemo(() => {
+    // Create a deep copy of the animation
+    const animationCopy = JSON.parse(JSON.stringify(guitarAnimation));
+    
+    // Slow down the animation
     if (animationCopy.fr) {
       animationCopy.fr = animationCopy.fr / 4;
     }
@@ -148,6 +176,44 @@ export default function Experience() {
                     <div className="w-80 h-80 md:w-96 md:h-96 relative opacity-45">
                       <Lottie 
                         animationData={slowHeartAnimation}
+                        className="w-full h-full"
+                        loop={true}
+                      />
+                    </div>
+                  </motion.div>
+                )}
+                
+                {/* PC animation for Reservations & Sales Agent card */}
+                {job.title === "Reservations & Sales Agent" && (
+                  <motion.div 
+                    className="relative md:absolute md:w-5/12 md:right-0 md:top-0 transform hidden md:flex justify-start items-start z-20"
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: false }}
+                    transition={{ duration: 1.2, delay: 0.3 }}
+                  >
+                    <div className="w-80 h-80 md:w-96 md:h-96 relative opacity-45">
+                      <Lottie 
+                        animationData={slowPcAnimation}
+                        className="w-full h-full"
+                        loop={true}
+                      />
+                    </div>
+                  </motion.div>
+                )}
+                
+                {/* Guitar animation for Client Service & Communication Roles card */}
+                {job.title === "Client Service & Communication Roles" && (
+                  <motion.div 
+                    className="relative md:absolute md:w-5/12 md:left-0 md:top-0 transform hidden md:flex justify-end items-start z-20"
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: false }}
+                    transition={{ duration: 1.2, delay: 0.3 }}
+                  >
+                    <div className="w-80 h-80 md:w-96 md:h-96 relative opacity-45">
+                      <Lottie 
+                        animationData={slowGuitarAnimation}
                         className="w-full h-full"
                         loop={true}
                       />
