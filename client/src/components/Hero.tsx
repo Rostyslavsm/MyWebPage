@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import Lottie from "lottie-react";
 import animationData from "@/assets/Animation.json";
 import { useEffect, useState } from "react";
+import FloatingNeonLight from "@/components/ui/FloatingNeonLight";
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
@@ -17,6 +18,7 @@ export default function Hero() {
 
   return (
     <section className="pt-32 pb-20 bg-[#0a0a0a] overflow-hidden">
+      <FloatingNeonLight initiallyVisible={isVisible} />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row gap-10 items-center">
           <div 
