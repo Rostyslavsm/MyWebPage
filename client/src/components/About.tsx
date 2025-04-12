@@ -81,7 +81,7 @@ export default function About() {
     // Wrap the section with motion.section and apply variants
     <motion.section
       id="about"
-      className="py-20 bg-[#0a0a0a]"
+      className="py-20" /* Removed bg-[#0a0a0a] */
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"

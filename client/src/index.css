@@ -12,6 +12,12 @@
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply font-sans antialiased text-foreground; /* Removed bg-background */
+    background-image: url('/src/assets/background.jpg'); /* Path relative to the client source root */
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    /* Keep existing Tailwind utilities if needed, but background is now handled manually */
   }
 }
