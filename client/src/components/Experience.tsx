@@ -84,7 +84,7 @@ export default function Experience() {
   return (
     <motion.section 
       id="experience" 
-      className="py-20 bg-[#0a0a0a]"
+      className="py-20"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"

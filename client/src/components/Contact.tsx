@@ -138,7 +138,7 @@ export default function Contact() {
   return (
     <motion.section 
       id="contact" 
-      className="py-20 bg-[#0a0a0a]"
+      className="py-20"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
@@ -162,10 +162,10 @@ export default function Contact() {
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Contact Information */}
           <motion.div 
-            className="bg-[#111111] p-8 rounded-lg border border-[#222222]"
+            className="backdrop-blur-md bg-[#111111]/60 p-8 rounded-lg border border-white/10 shadow-lg"
             variants={cardVariants}
             whileHover={{ 
-              boxShadow: "0 10px 30px rgba(139, 92, 246, 0.15)",
+              boxShadow: "0 10px 30px rgba(139, 92, 246, 0.25)",
               transition: { duration: 0.3 }
             }}
           >
@@ -303,10 +303,10 @@ export default function Contact() {
           
           {/* Contact Form */}
           <motion.div 
-            className="bg-[#111111] p-8 rounded-lg border border-[#222222]"
+            className="backdrop-blur-md bg-[#111111]/60 p-8 rounded-lg border border-white/10 shadow-lg"
             variants={cardVariants}
             whileHover={{ 
-              boxShadow: "0 10px 30px rgba(139, 92, 246, 0.15)",
+              boxShadow: "0 10px 30px rgba(139, 92, 246, 0.25)",
               transition: { duration: 0.3 }
             }}
           >
