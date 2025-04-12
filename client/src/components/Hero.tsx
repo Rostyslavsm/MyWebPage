@@ -17,7 +17,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="pt-20 md:pt-28 lg:pt-32 xl:pt-40 pb-16 md:pb-20 lg:pb-28 xl:pb-32 overflow-hidden min-h-[80vh] lg:min-h-[90vh] xl:min-h-screen flex items-center"> {/* Removed bg-[#0a0a0a] */}
+    <section id="hero" className="pt-20 md:pt-28 lg:pt-32 xl:pt-40 pb-16 md:pb-20 lg:pb-28 xl:pb-32 overflow-hidden min-h-[80vh] lg:min-h-[90vh] xl:min-h-screen flex items-center"> {/* Removed bg-[#0a0a0a] */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row gap-10 items-center">
           <motion.div 
