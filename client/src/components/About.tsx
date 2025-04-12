@@ -1,10 +1,6 @@
 import { motion } from "framer-motion"; // Import motion
-import { useEffect, useState } from "react";
 
 export default function About() {
-  // Add state for the pulsing neon color
-  const [neonColor, setNeonColor] = useState("#8b5cf6");
-
   // Define animation variants
   const sectionVariants = {
     hidden: { opacity: 0 },
@@ -14,138 +10,91 @@ export default function About() {
         duration: 0.6, 
         ease: "easeOut",
         when: "beforeChildren",
-        staggerChildren: 0.2 
+        staggerChildren: 0.2
       }
     }
   };
-
-  // Image animation variants
-  const imageVariants = {
-    hidden: { opacity: 0, y: 50 },
+  
+  // Portrait animation - slide in from bottom
+  const portraitVariants = {
+    hidden: { opacity: 0, y: 100 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut" }
+      transition: { 
+        duration: 0.8, 
+        ease: "easeOut",
+        type: "spring",
+        damping: 12
+      }
     }
   };
-
-  // Text animation variants
+  
+  // Text content animation - slide in from right
   const textVariants = {
     hidden: { opacity: 0, x: 100 },
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.8, ease: "easeOut" }
+      transition: { 
+        duration: 0.7, 
+        ease: "easeOut",
+        type: "spring",
+        damping: 15
+      }
     }
   };
-
-  // Cards animation variants
+  
+  // Card animation - fade in
   const cardVariants = {
     hidden: { opacity: 0, scale: 0.95 },
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.6, ease: "easeOut" }
+      transition: { 
+        duration: 0.6, 
+        ease: "easeOut"
+      }
     }
   };
-
-  // Create keyframes for the pulsing neon glow
-  useEffect(() => {
-    const keyframes = `
-      @keyframes profilePulse {
-        0% {
-          box-shadow: 0 0 15px 2px ${neonColor}, 0 0 30px 5px ${neonColor}40;
-          transform: scale(0.97);
-        }
-        50% {
-          box-shadow: 0 0 25px 5px ${neonColor}, 0 0 70px 10px ${neonColor}70;
-          transform: scale(1);
-        }
-        100% {
-          box-shadow: 0 0 15px 2px ${neonColor}, 0 0 30px 5px ${neonColor}40;
-          transform: scale(0.97);
-        }
-      }
-    `;
-
-    const styleElement = document.createElement('style');
-    styleElement.innerHTML = keyframes;
-    document.head.appendChild(styleElement);
-
-    return () => {
-      document.head.removeChild(styleElement);
-    };
-  }, [neonColor]);
 
   return (
     // Wrap the section with motion.section and apply variants
     <motion.section
       id="about"
-      className="py-20" /* Removed bg-[#0a0a0a] */
+      className="py-20"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false, amount: 0.5 }} // Trigger every time 50% is visible
+      viewport={{ once: true, amount: 0.4 }} // Increased from 0.2 to 0.4 - requires more of section to be visible
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col lg:flex-row items-center gap-12">
-            {/* Portrait Section */}
-            <motion.div
+            {/* Portrait Section - slide in from bottom */}
+            <motion.div 
               className="w-full lg:w-1/3"
-              variants={imageVariants}
+              variants={portraitVariants}
             >
               <div className="card relative mx-auto max-w-[350px]">
-                <div className="relative">
-                  {/* Outer neon glow ring */}
-                  <div 
-                    className="absolute z-0 rounded-full"
-                    style={{
-                      top: '15px',
-                      left: '15px', 
-                      width: '320px',
-                      height: '320px',
-                      border: `8px solid ${neonColor}`,
-                      animation: 'profilePulse 4s infinite ease-in-out',
-                      filter: `blur(8px)`,
-                      opacity: 0.85,
-                    }}
-                  ></div>
-                  
-                  {/* Inner gradient circle with white border */}
-                  <div 
-                    className="relative z-10 mx-auto rounded-full overflow-hidden"
-                    style={{
-                      width: '330px',
-                      height: '330px',
-                      background: `radial-gradient(circle, #2a1b3d 0%, #171321 60%, #0d0a12 100%)`,
-                      border: `3px solid #ffffff20`,
-                      padding: '12px',
-                    }}
-                  >
-                    {/* Image container */}
-                    <div className="w-full h-full rounded-full overflow-hidden"
-                      style={{
-                        background: `linear-gradient(145deg, #1f1633 0%, #0f0a18 100%)`,
-                      }}
-                    >
-                      <img 
-                        src="LINKEDINIMAGE.png" 
-                        alt="Ross Muretov"
-                        className="w-full h-full object-cover object-center"
-                      />
-                    </div>
+                <div className="circle before:content-[''] before:absolute before:top-[30px] before:left-[2px] before:right-[2px] before:w-[350px] before:h-[350px] before:rounded-full before:bg-[#111111] before:border-8 before:border-[#8b5cf6] before:transition-all before:duration-500 before:shadow-[0_0_50px_#8b5cf6] before:[animation:pulse_4s_ease-in-out_infinite]">
+                  <div className="relative w-[350px] h-[350px] rounded-full overflow-hidden z-10 top-[30px]">
+                    <img 
+                      src="LINKEDINIMAGE.png" 
+                      alt="Ross Muretov"
+                      className="absolute w-full h-full object-cover object-center"
+                    />
                   </div>
                 </div>
               </div>
             </motion.div>
 
-            {/* Content Section */}
-            <motion.div 
-              className="w-full lg:w-2/3"
-              variants={textVariants}
-            >
-              <div className="space-y-6">
+            {/* Content Section - text slides in from right */}
+            <div className="w-full lg:w-2/3">
+              <motion.div 
+                className="space-y-6"
+                variants={textVariants}
+              >
                 <h1 className="text-4xl md:text-5xl font-bold">
                   <span className="text-white">Hello, I'm </span>
                   <span className="text-[#8b5cf6]">Ross Muretov</span>
@@ -156,6 +105,7 @@ export default function About() {
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Card 1 - fade in */}
                   <motion.div 
                     className="bg-[#111111] p-6 rounded-lg border border-[#222222]"
                     variants={cardVariants}
@@ -184,6 +134,7 @@ export default function About() {
                     </ul>
                   </motion.div>
 
+                  {/* Card 2 - fade in */}
                   <motion.div 
                     className="bg-[#111111] p-6 rounded-lg border border-[#222222]"
                     variants={cardVariants}
@@ -202,11 +153,11 @@ export default function About() {
                     </div>
                   </motion.div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </div>
-    </motion.section> // Close motion.section
+    </motion.section>
   );
 }
