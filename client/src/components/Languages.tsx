@@ -196,15 +196,15 @@ export default function Languages() {
                 <div className="bg-[#111111] border border-[#222222] p-6 rounded-xl shadow-xl text-center absolute inset-0 w-full h-full card-content-3d">
                   <div className="relative flex flex-col items-center justify-center h-full w-full">
                     <motion.div 
-                      className="w-20 h-20 rounded-full bg-[#8b5cf6]/10 flex items-center justify-center mb-5"
+                      className="w-20 h-20 rounded-full bg-[#1a1a1a] flex items-center justify-center mb-5 border-2 border-[#222222] shadow-lg overflow-hidden"
                       whileHover={{ 
-                        scale: 1.1, 
-                        backgroundColor: "rgba(139, 92, 246, 0.2)",
+                        scale: 1.05, 
+                        borderColor: "#8b5cf6",
                         transition: { duration: 0.3 }
                       }}
                     >
                       {flagIcons[typedLanguage.name] ? (
-                        <span className={`fi fi-${flagIcons[typedLanguage.name]} text-4xl`}></span>
+                        <span className={`fi fi-${flagIcons[typedLanguage.name]} text-5xl`} style={{ boxShadow: "0 0 10px rgba(0,0,0,0.3)" }}></span>
                       ) : (
                         <i className='bx bx-globe text-4xl text-[#8b5cf6]'></i>
                       )}

@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { resumeData } from "@/data/resumeData";
 import { motion } from "framer-motion";
+import MatrixRain from "./MatrixRain";
 // Removed: import { useInView } from "react-intersection-observer";
 
 // Tech icons mapping
@@ -80,39 +81,37 @@ const getTechColor = (category: string, index: number): string => {
 };
 
 // Component for individual tech card
+// Removed isVisible prop and its usage
 const TechCard = ({ tech, category, index }: { tech: string, category: string, index: number }) => {
   const bgColor = getTechColor(category, index);
   const iconClass = techIcons[tech] || "bx-code"; // Default to code icon if not found
 
   return (
     <motion.div
-      className="flex flex-col items-center justify-center p-4 rounded-lg bg-[#111111] border border-[#222222] hover:border-[#8b5cf6]/50 transition-all w-[140px]"
-      variants={{
-        hidden: { opacity: 0, y: 30 },
-        visible: { 
-          opacity: 1, 
-          y: 0,
-          transition: { duration: 0.5, ease: "easeOut" }
-        }
-      }}
+      className="flex flex-col items-center justify-center p-4 rounded-lg bg-[#111111] border border-[#222222] hover:border-[#8b5cf6]/50 transition-all w-[140px] md:w-[160px] lg:w-[180px]"
+      initial={{ opacity: 0, y: 20 }}
+      // Changed animation to always animate to the visible state
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, delay: index * 0.05 }}
       whileHover={{ y: -5, boxShadow: "0 10px 25px rgba(139, 92, 246, 0.15)", transition: { duration: 0.2 } }}
     >
       <div
-        className="w-16 h-16 rounded-lg flex items-center justify-center mb-3"
-        style={{ backgroundColor: `${bgColor}30` }} // 30% opacity version of the color
+        className="w-16 h-16 md:w-20 md:h-20 rounded-lg flex items-center justify-center mb-3"
+        style={{ 
+          backgroundColor: `${bgColor}30`,
+          boxShadow: "inset 0 0 10px rgba(255,255,255,0.05)"
+        }}
       >
         <i
-          className={`bx ${iconClass} text-3xl`}
+          className={`bx ${iconClass} text-3xl md:text-4xl`}
           style={{
             color: bgColor,
-            filter: iconClass === 'bxl-github' ||
-                    iconClass === 'bx-broadcast' ||
-                    iconClass === 'bx-sun' ||
-                    iconClass === 'bx-link' ? 'drop-shadow(0 0 2px white)' : 'none'
+            filter: "drop-shadow(0 0 3px rgba(255,255,255,0.2))",
+            transform: "scale(1.2)"
           }}
         ></i>
       </div>
-      <span className="text-white text-sm font-medium text-center">{tech}</span>
+      <span className="text-white text-sm md:text-base font-medium text-center">{tech}</span>
     </motion.div>
   );
 };
@@ -120,34 +119,31 @@ const TechCard = ({ tech, category, index }: { tech: string, category: string, i
 export default function Skills() {
   // State for active category
   const [activeCategory, setActiveCategory] = useState("programmingLanguages");
-
-  // Define animation variants
-  const sectionVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { 
-        duration: 0.6, 
-        ease: "easeOut",
-        when: "beforeChildren",
-        staggerChildren: 0.1
-      }
-    }
-  };
+  // State to track if the Skills section is in view
+  const [isInView, setIsInView] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
   
-  const menuVariants = {
-    hidden: { opacity: 0, y: -30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { 
-        duration: 0.7, 
-        ease: "easeOut",
-        type: "spring",
-        damping: 15
-      }
+  // Setup intersection observer to detect when Skills section is in view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          setIsInView(entry.isIntersecting);
+        });
+      },
+      { threshold: 0.2 }
+    );
+    
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
-  };
+    
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   // Categories data with icons and labels
   const categories = [
@@ -160,36 +156,32 @@ export default function Skills() {
   ];
 
   return (
-    <motion.section 
+    <section 
       id="skills" 
-      className="py-12 md:py-20 lg:py-28 xl:py-32 overflow-hidden min-h-[70vh] lg:min-h-[80vh] xl:min-h-[90vh] flex flex-col justify-center"
-      variants={sectionVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: false, amount: 0.2 }}
+      className="py-16 md:py-24 lg:py-32 xl:py-40 relative min-h-[70vh] lg:min-h-[80vh] xl:min-h-[90vh] flex flex-col justify-center"
+      ref={sectionRef}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-
+      {/* Matrix Rain Background */}
+      {isInView && <MatrixRain isVisible={isInView} />}
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 max-w-7xl relative z-10">
         {/* Glassmorphic Two-Row Menu */}
-        <motion.div 
-          className="relative mb-12"
-          variants={menuVariants}
-        >
-          <div className="backdrop-blur-md bg-[#111111]/40 border border-[#ffffff10] mx-auto max-w-5xl overflow-hidden">
+        <div className="relative mb-12 lg:mb-16 transition-all duration-1000 opacity-100 translate-y-0">
+          <div className="backdrop-blur-md bg-[#111111]/40 border border-[#ffffff10] mx-auto max-w-5xl xl:max-w-6xl overflow-hidden rounded-xl">
             {/* First row - first 3 buttons */}
             <div className="grid grid-cols-3 w-full">
               {categories.slice(0, 3).map((category) => (
                 <button
                   key={category.id}
                   onClick={() => setActiveCategory(category.id)}
-                  className={`py-4 flex flex-col items-center justify-center transition-all duration-300 border-r border-[#ffffff10] last:border-r-0 ${
+                  className={`py-4 md:py-5 lg:py-6 flex flex-col items-center justify-center transition-all duration-300 border-r border-[#ffffff10] last:border-r-0 ${
                     activeCategory === category.id
                       ? "bg-[#8b5cf6]/20 text-white"
                       : "bg-[#ffffff05] text-gray-300 hover:bg-[#ffffff10]"
                   }`}
                 >
-                  <i className={`bx ${category.icon} text-xl mb-1`}></i>
-                  <span className="text-sm whitespace-nowrap">{category.label}</span>
+                  <i className={`bx ${category.icon} text-xl md:text-2xl mb-1 md:mb-2`}></i>
+                  <span className="text-sm md:text-base whitespace-nowrap">{category.label}</span>
                 </button>
               ))}
             </div>
@@ -200,31 +192,30 @@ export default function Skills() {
                 <button
                   key={category.id}
                   onClick={() => setActiveCategory(category.id)}
-                  className={`py-4 flex flex-col items-center justify-center transition-all duration-300 border-r border-[#ffffff10] last:border-r-0 ${
+                  className={`py-4 md:py-5 lg:py-6 flex flex-col items-center justify-center transition-all duration-300 border-r border-[#ffffff10] last:border-r-0 ${
                     activeCategory === category.id
                       ? "bg-[#8b5cf6]/20 text-white"
                       : "bg-[#ffffff05] text-gray-300 hover:bg-[#ffffff10]"
                   }`}
                 >
-                  <i className={`bx ${category.icon} text-xl mb-1`}></i>
-                  <span className="text-sm whitespace-nowrap">{category.label}</span>
+                  <i className={`bx ${category.icon} text-xl md:text-2xl mb-1 md:mb-2`}></i>
+                  <span className="text-sm md:text-base whitespace-nowrap">{category.label}</span>
                 </button>
               ))}
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Tech Cards Grid */}
         <motion.div
-          className="flex flex-wrap justify-center gap-4"
+          className="flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-8"
+          initial="initial"
+          animate="animate"
           variants={{
-            hidden: { opacity: 0 },
-            visible: {
+            initial: { opacity: 0 },
+            animate: {
               opacity: 1,
-              transition: { 
-                staggerChildren: 0.05,
-                delayChildren: 0.2
-              }
+              transition: { staggerChildren: 0.05 }
             }
           }}
         >
@@ -238,6 +229,6 @@ export default function Skills() {
           ))}
         </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 }
