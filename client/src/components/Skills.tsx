@@ -162,7 +162,7 @@ export default function Skills() {
   return (
     <motion.section 
       id="skills" 
-      className="py-20 overflow-hidden"
+      className="py-12 md:py-20 lg:py-28 xl:py-32 overflow-hidden min-h-[70vh] lg:min-h-[80vh] xl:min-h-[90vh] flex flex-col justify-center"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
