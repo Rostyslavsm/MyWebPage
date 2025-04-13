@@ -248,7 +248,11 @@ export default function Experience() {
                       >
                         <div className="flex flex-col sm:flex-row sm:justify-between mb-4">
                           <h3 className="text-xl font-semibold text-white">{job.title}</h3>
-                          <span className="inline-block px-3 py-1 bg-[#8b5cf6]/10 text-[#8b5cf6] rounded-full text-sm font-medium mt-2 sm:mt-0">{job.period}</span>
+                          <span className="inline-flex flex-col justify-center items-center px-3 py-1.5 bg-[#111111] border border-[#8b5cf6]/30 text-[#8b5cf6] rounded-md text-sm font-medium mt-2 sm:mt-0 shadow-sm shadow-[#8b5cf6]/10 min-w-[90px] text-center">
+                            {job.period.split(' - ')[0]}
+                            <span className="text-xs text-[#8b5cf6]/80 mt-0.5">to</span>
+                            {job.period.split(' - ')[1]}
+                          </span>
                         </div>
                         <h4 className="text-lg text-gray-400 mb-3">{job.company} | {job.location}</h4>
                         <ul className="space-y-2 ml-5 list-disc text-gray-400">
@@ -278,7 +282,11 @@ export default function Experience() {
                       >
                         <div className="flex flex-col sm:flex-row sm:justify-between mb-4">
                           <h3 className="text-xl font-semibold text-white">{job.title}</h3>
-                          <span className="inline-block px-3 py-1 bg-[#8b5cf6]/10 text-[#8b5cf6] rounded-full text-sm font-medium mt-2 sm:mt-0">{job.period}</span>
+                          <span className="inline-flex flex-col justify-center items-center px-3 py-1.5 bg-[#111111] border border-[#8b5cf6]/30 text-[#8b5cf6] rounded-md text-sm font-medium mt-2 sm:mt-0 shadow-sm shadow-[#8b5cf6]/10 min-w-[90px] text-center">
+                            {job.period.split(' - ')[0]}
+                            <span className="text-xs text-[#8b5cf6]/80 mt-0.5">to</span>
+                            {job.period.split(' - ')[1]}
+                          </span>
                         </div>
                         <h4 className="text-lg text-gray-400 mb-3">{job.company} | {job.location}</h4>
                         <ul className="space-y-2 ml-5 list-disc text-gray-400">
