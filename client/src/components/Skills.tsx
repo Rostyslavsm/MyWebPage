@@ -161,6 +161,9 @@ export default function Skills() {
       className="py-16 md:py-24 lg:py-32 xl:py-40 relative min-h-[70vh] lg:min-h-[80vh] xl:min-h-[90vh] flex flex-col justify-center"
       ref={sectionRef}
     >
+      {/* Glassmorphic Divider Line */}
+      <div className="absolute top-0 left-0 right-0 h-10 md:h-10 flex items-center justify-center backdrop-blur-sm bg-black/30 border-b border-white/10 z-20"></div>
+      {/* Always render Vortex but control visibility with prop */}
       {/* Matrix Rain Background */}
       {isInView && <MatrixRain isVisible={isInView} />}
       
@@ -229,6 +232,8 @@ export default function Skills() {
           ))}
         </motion.div>
       </div>
+      {/* Glassmorphic Divider Line */}
+      <div className="absolute bottom-0 left-0 right-0 h-10 md:h-10 flex items-center justify-center backdrop-blur-sm bg-black/30 border-b border-white/10 z-20"></div>
     </section>
   );
 }
