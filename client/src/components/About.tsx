@@ -50,7 +50,7 @@ export default function About() {
   }, []);
   
   // Calculate the total scroll space (3 viewport heights)
-  const totalScrollSpace = viewportHeight * 2.5;
+  const totalScrollSpace = viewportHeight * 2.2;
   
   // Calculate the scroll range where About should stay fixed
   const startFixed = sectionTop;
@@ -99,8 +99,9 @@ export default function About() {
         if (!isVisible) {
           setIsVisible(true);
         }
-      } else if (currentScroll < fadeInThreshold - 100 || currentScroll >= fadeOutThreshold + 100) {
-        // Add some buffer to prevent toggling back and forth at the threshold
+      } else if (currentScroll < fadeInThreshold || currentScroll >= fadeOutThreshold + 100) {
+        // Remove the buffer when scrolling up (currentScroll < fadeInThreshold)
+        // Keep buffer when scrolling down past fadeOutThreshold to prevent flicker
         if (isVisible) {
           setIsVisible(false);
         }
