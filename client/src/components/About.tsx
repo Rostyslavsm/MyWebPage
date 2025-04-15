@@ -95,13 +95,12 @@ export default function About() {
       }
       
       // Handle visibility with hysteresis to prevent flicker
-      if (currentScroll >= fadeInThreshold && currentScroll < fadeOutThreshold) {
+      if (currentScroll >= fadeInThreshold + 100 && currentScroll < fadeOutThreshold) {
         if (!isVisible) {
           setIsVisible(true);
         }
       } else if (currentScroll < fadeInThreshold || currentScroll >= fadeOutThreshold + 100) {
-        // Remove the buffer when scrolling up (currentScroll < fadeInThreshold)
-        // Keep buffer when scrolling down past fadeOutThreshold to prevent flicker
+        // Add buffer for both directions to create smooth fade effect
         if (isVisible) {
           setIsVisible(false);
         }
