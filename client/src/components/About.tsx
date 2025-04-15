@@ -50,7 +50,7 @@ export default function About() {
   }, []);
   
   // Calculate the total scroll space (3 viewport heights)
-  const totalScrollSpace = viewportHeight * 3;
+  const totalScrollSpace = viewportHeight * 2.5;
   
   // Calculate the scroll range where About should stay fixed
   const startFixed = sectionTop;
@@ -85,7 +85,7 @@ export default function About() {
       
       // Calculate thresholds
       const fadeInThreshold = startFixed - 300;
-      const fadeOutThreshold = endFixed - (viewportHeight * 0.5);
+      const fadeOutThreshold = endFixed - (viewportHeight * 0.3);
       
       // Handle fixed positioning
       if (startFixed <= currentScroll && currentScroll < endFixed) {
